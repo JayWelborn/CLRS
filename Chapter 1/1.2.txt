@@ -1,0 +1,9 @@
+1.2-1:
+    A) Image processing applications require use of
+       algorithms at the application level. Even
+       simply resizing an image involves performing
+       operations continuously over all of the pixels
+       in the image.
+
+1.2-2:
+    B) n = 8 lgn
