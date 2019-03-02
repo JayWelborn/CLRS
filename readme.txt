@@ -4,4 +4,4 @@ and Stein.
 
 The solutions found in this folder are not guaranteed to be the most efficient
 or correct solutions available. Don't use these for homework if you somehow
-stumble upon this.
+stumble on this.

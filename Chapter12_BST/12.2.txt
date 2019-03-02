@@ -1,0 +1,75 @@
+1:
+    c. 912 cannot exist in 911's left subtree
+
+
+2:
+    TreeMinimum(root):
+        if not root.left:
+            return root.value
+        return TreeMinimum(root.left)
+
+    TreeMaximum(root):
+        if not root.right:
+            return root.value
+        return TreeMinimum(root.right)
+
+
+3:
+    TreePredecessor(node):
+        if node.left:
+            return TreeMaximum(node.left)
+        parent = node.parent
+        while parent != null and node == parent.left:
+            node = parent
+            parent = node.parent
+        return parent
+
+
+4:
+    1
+     \
+      3
+     / \
+    2   4
+
+    If searching for 4: A = {2}, B = {1, 3, 4}. 2 > 1, so Bunyan is wrong
+
+5:
+    The in order traversal of a binary tree first visits a node's left subtree,
+    then the node, then the node's right subtree. A node's predecessor will be
+    the last node visited in an in-order traversal of its left subtree. This
+    will be the right-most node in the tree, as right nodes are visited last.
+    The right most node in any tree has no right child, therefore the predecessor
+    of a node with two children will not have a right child.
+
+    Similarly, a node's successor will be the first node visited in an in-order
+    traversal of its right subtree. When traversing this subtree, the left-most
+    node in the tree will be visited first. Thus by definition a node's successor
+    will have no left child of its own.
+
+6:
+    If x is a node in a binary tree without a right child, then when x is visited
+    it will be the right most node in a given subtree T'. If x has a succesor, then
+    T' must be the left subtree of a node y, as y's left child will be visited
+    before it in an in-order traversal. Every node between x and y will have x or
+    its ancestors as right children, otherwise they would be visited between x and
+    y in the traversal. Thus y is the lowest ancestor of x whose left child is also
+    an ancestor of x.
+
+7:
+    TreeMinimum returns the minimum element in a subtree. Calling TreeSuccessor
+    n - 1 times follows the same path through the tree as an in-order traversal.
+    Because an in-order traversal takes O(n) time, this algorithm also takes O(n)
+    time.
+
+9:
+    If x is a leaf node, it by definition has no children. x will either be the
+    left child or the right child of its parent.
+
+    If x is the left child of y, y is the smallest value in the tree larger than
+    x. If this were not the case, then the binary search property for the node
+    z with value between x and y would be violated.
+
+    If x is the right child of y, y is the largest value in the tree smaller than
+    x. If it were not, then the binary search tree would be violated for the node
+    z which was between x and y.

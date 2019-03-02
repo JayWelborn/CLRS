@@ -1,0 +1,67 @@
+1:
+
+         10
+       /    \
+      4      17
+     / \    /  \
+    1   5  16   21
+
+
+          10
+         /   \
+        5     17
+       /     /  \
+      4     16   21
+     /
+    1
+
+    etc.
+
+
+2:
+
+    The binary search property states that a node's left subtree will always
+    contain elements smaller than it, and its right subtree will always contain
+    nodes larger. The min-heap property guarantees that a node is always smaller
+    than any node below it, but makes no guarantee about the relative size of
+    its left/right children.
+
+    The min-heap property cannot guarantee an O(n) time route through elements
+    in sorted order. You can get through elements in order by repeatedly deleting
+    the root node, but without knowing anything about the sizes of the subtrees
+    rebalancing the tree after each deletion will take up to log(n) time.
+
+3:
+
+    1. create a new stack, set current node as root
+    2. push current onto stack, set current to current.left until current is null
+    3. If current it null and stack isn't empty
+        pop top node
+        print value
+        current = popped.right
+        goto step 2
+    4. If current is null and stack is empty, we're done
+
+
+4:
+
+    PreOrder(Node root):
+        visit(root)
+        PreOrder(root.left)
+        PreOrder(root.right)
+
+    PostOrder(Node root):
+        PostOrder(root.left)
+        PostOrder(root.right)
+        visit(root)
+
+
+5:
+
+    The height of a binary tree is equal to lg(n). When constructing a binary
+    search tree, the best case scenario is that a tree constructed is a perfectly
+    balanced tree. This will result in the shortest number of comparisons per
+    insertion operation as the height of a tree is minimal when the tree is full.
+
+    Every insertion operation takes up to lg(n) time, and there are n insertions.
+    This results in a best case insertion time of n * lg(n).
