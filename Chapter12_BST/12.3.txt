@@ -1,0 +1,11 @@
+1:
+    TreeInsert(root, value):
+        if value < root.value:
+            if root.left = null:
+                root.left = new Node(value)
+            TreeInsert(root.left, value)
+
+        else:
+            if root.right = null:
+                right.right = new Node(value)
+            TreeInsert(root.right, value)
