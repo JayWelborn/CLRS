@@ -9,3 +9,73 @@
             if root.right = null:
                 right.right = new Node(value)
             TreeInsert(root.right, value)
+
+2:
+    When we insert a value into a binary search tree, we compare
+    the new value to all values existing in the tree, then create
+    a new leaf to hold our new value. When searching for a value
+    in the same tree, we follow the same path. This time, however,
+    there is another node at the bottom of the tree containing
+    our newly inserted value. This means we will use one more
+    comparison to find a value than we will to insert it.
+
+3:
+    In the best case, nodes will be inserted into a binary search
+    tree in an order that creates a perfectly balanced tree. Because
+    the resulting height will be lg(n), and we perform n insertions,
+    the building of the tree takes O(n*lg(n)). A traversal takes O(n)
+    time, so building and traversing the tree will take O(n*lg(n) + n),
+    which is O(n*lg(n)).
+
+    In the worst case, the values to be inserted are already sorted.
+    This will result in a tree of height n. Inserting n nodes will
+    take 0 + 1 + ... (n - 1) + n steps, which is O(n^2). Traversing
+    will still take O(n) time. This makes the worst case running time
+    O(n^2 + n), or O(n^2).
+
+4:
+    Deletion is not commutative. As a counterexample, consider the
+    following tree:
+
+              10
+             /
+            3
+           / \
+          2   7
+             / \
+            4   9
+
+    If we delete 2 then 3, the resulting tree looks like:
+
+              10
+             /
+            7
+           / \
+          4   9
+
+    If we delete 3 then 2, the resulting tree looks like:
+
+              10
+             /
+            4
+             \
+              7
+               \
+                9
+
+5:
+    Search and insert stay the same.
+
+    Delete(value):
+        node = search(value)
+        if node has no children:
+            garbage-collect(node)
+
+        if node has one child:
+            temp = node
+            node = child
+            garbage-collect(temp)
+
+        if node has two children:
+            node.val = node.succ.val
+            Delete(node.succ)
